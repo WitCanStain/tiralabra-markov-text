@@ -6,5 +6,5 @@ The next steps are to get started with implementing a rudimentary trie structure
 
 Questions:
 
-What functions/algorithms must be implemented myself and which ones can be taken from the functionality of the standard Java libraries is still a little unclear. For example, are split() or join() allowed? How about iterating over lists? The FAQ hints that the range of allowed helper functions depends on the complexity of the project, and so it is difficult for me to determine the answer to these kinds of questions myself. 
+What functions/algorithms must be implemented myself and which ones can be taken from the functionality of the standard Java libraries is still a little unclear. For example, are split() or join() allowed? Do I need to implement HashMap myself? How about iterating over lists? The FAQ hints that the range of allowed helper functions depends on the complexity of the project, and so it is difficult for me to determine the answer to these kinds of questions myself. 
 
