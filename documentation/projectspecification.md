@@ -8,6 +8,8 @@ The documentation, comments and code of this project will be in English.
 Sources:
 
 https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+
 https://setosa.io/ev/markov-chains/
+
 https://www.kdnuggets.com/2019/11/markov-chains-train-text-generation.html
 
