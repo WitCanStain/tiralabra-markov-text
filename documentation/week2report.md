@@ -10,3 +10,4 @@ The next step is to create the trie structure that will be the 'heart' of the pr
 Question: Are there any performance pitfalls to be wary of when creating the trie structure? Is there a recommended way to build it from basic data structures?
 
 
+Time used: 3 hrs
