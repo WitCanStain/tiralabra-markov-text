@@ -11,7 +11,12 @@ import java.util.ArrayList;
 public class ParseInput {
     
     
-    
+    /**
+     * This method takes a file path and generates a list of words from the file
+     * 
+     * @param filePath path to file the user wishes to use
+     * @return a list of words in the file, separated by whitespace
+     */
     public static ArrayList<String> readFile(final String filePath) {
         ArrayList<String> wordList = new ArrayList<>();
         try {
@@ -25,7 +30,7 @@ public class ParseInput {
             System.out.println(wordList);
             
         } catch (FileNotFoundException e) {
-            System.out.println("And error occurred:");
+            System.out.println("An error occurred:");
             e.printStackTrace();
         }
         
