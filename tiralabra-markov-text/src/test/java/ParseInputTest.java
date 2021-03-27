@@ -40,7 +40,7 @@ public class ParseInputTest {
     // public void hello() {}
     @Test
     public void readFileReturnsArrayList() {
-        assertTrue(ParseInput.readFile("/home/ruby/coding/tiralabra-markov-text/testInputFile") instanceof ArrayList<?>);
+        assertTrue(ParseInput.readFile("../testInputFile") instanceof ArrayList<?>);
     }
     
     
