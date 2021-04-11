@@ -9,7 +9,7 @@ public class Main {
     
     public static void main(String[] args) {
         ArrayList<String> tokenList = ParseInput.readFile("../testInputFile");
-        k = 2;
+        k = 3;
         Trie trie = new Trie(tokenList, k);
         MarkovProcess.generateSentence(trie, 10);
         System.out.println("Should end here.");
