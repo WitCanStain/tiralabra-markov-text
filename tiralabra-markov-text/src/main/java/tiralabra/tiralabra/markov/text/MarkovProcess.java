@@ -14,11 +14,12 @@ public class MarkovProcess {
      * @param length the number of tokens (words) in the sentence.
      * @return the generated sentence.
      */
-    public String generateSentence(Trie trie, int length) {
+    public static String generateSentence(Trie trie, int length) {
+        System.out.println("Entered generateSentence.");
         String sentence = "";
         List<String> prevSequence = new ArrayList<>();
         TrieNode current = trie.getRoot();
-        ArrayList<String> tokenList = ParseInput.getTokenList();
+        
         int k = Main.getK();
         ArrayList<String> childTokens = new ArrayList<>();
         ArrayList<Integer> weights = new ArrayList<>();
@@ -35,9 +36,11 @@ public class MarkovProcess {
             
             
             sentence += token + " ";
+            System.out.println("Sentence: " + sentence);
             prevSequence.add(token);
             current = current.getChildNodes().get(token);
         }
+        System.out.println("First part end.");
         
         
         
@@ -48,7 +51,10 @@ public class MarkovProcess {
             String token = Utility.weightedChoice(childTokens, weights);
 
             sentence += token + " ";
-            prevSequence = prevSequence.subList(prevSequence.size()-k, prevSequence.size());
+            System.out.println("Sentence: " + sentence);
+            prevSequence = prevSequence.subList(prevSequence.size()-k+1, prevSequence.size());
+            prevSequence.add(token);
+            System.out.println("prevsequence: " + prevSequence);
             current = trie.getNodeFromSequence(prevSequence);
             if (current == null) {
                 System.out.println("Error! Error! Token not found.");
@@ -56,7 +62,9 @@ public class MarkovProcess {
             }
         }
         
-        
+        System.out.println("Second part end.");
+        System.out.println("Sentence:");
+        System.out.println(sentence);
         return sentence;
     }
     

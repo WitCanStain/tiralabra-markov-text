@@ -16,22 +16,29 @@ public class Utility {
      */
     public static String weightedChoice(ArrayList<String> childTokens, ArrayList<Integer> weights) {
         int sumWeight = 0;
+        for (int i = 0; i<weights.size(); i++) {
+            System.out.println("Weight: " + weights.get(i) + ", token: " + childTokens.get(i));
+        }
         ArrayList<Integer> cumulativeWeights = new ArrayList<>();
         for (int i : weights) {
             sumWeight += i;
             cumulativeWeights.add(sumWeight);
         }
-        
-       Random random = new Random();
-       int randomNumber = random.nextInt(sumWeight);
-       int randomIndex = 0;
-       for (int i = 0; i < cumulativeWeights.size(); i++) {
-           if (cumulativeWeights.get(i) >= randomNumber) {
-               randomIndex = i;
-           }
-       }
-       return childTokens.get(randomIndex);
-        
+        System.out.println("Sumweight: " + sumWeight);
+        System.out.println("cumulative weights: " + cumulativeWeights);
+        Random random = new Random();
+        int randomNumber = random.nextInt(sumWeight);
+        int randomIndex = 0;
+        for (int i = 0; i < cumulativeWeights.size(); i++) {
+            if (cumulativeWeights.get(i) >= randomNumber) {
+                randomIndex = i;
+                break;
+            }
+        }
+        System.out.println("Random Index: " + randomIndex);
+        String token = childTokens.get(randomIndex);
+        System.out.println("Weighted choice: " + token);
+        return token;
         
         
         

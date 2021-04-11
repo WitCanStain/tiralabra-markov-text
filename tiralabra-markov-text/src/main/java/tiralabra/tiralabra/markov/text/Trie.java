@@ -8,7 +8,8 @@ public class Trie {
     private TrieNode root;
     
     public Trie (ArrayList<String> tokenList, int k) {
-        
+        root = new TrieNode();
+        createTrie(tokenList, k);
     }
     
     /**
@@ -21,16 +22,17 @@ public class Trie {
         
         for (int i = k; i < tokenList.size(); i++) {
             ArrayList<String> sequence = new ArrayList<>();
-            for (int j = i-k; j <= i; j--) {
+            for (int j = i-k; j <= i; j++) {
                 sequence.add(tokenList.get(j));
             }
             
             insert(sequence);
         }
+        System.out.println("Trie created.");
     }
     
     /**
-     * Insert a state into the trie if it does not exist, or increase the 
+     * Insert a sequence into the trie if it does not exist, or increase the 
      * counter of its occurrences if it already exists.
      * @param sequence the sequence of tokens to be inserted.
      */
@@ -54,6 +56,7 @@ public class Trie {
                 
             }
         }
+        System.out.println("Sequence inserted.");
         
         
         
