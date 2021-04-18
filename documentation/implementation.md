@@ -6,7 +6,7 @@ First, we split the input text into words or 'tokens' ('word' is a bit of a misn
 trie which has as its nodes individual tokens of the text. For example, if the input text is "the quick brown fox jumped over the lazy dog.", then the list of tokens will be
 ["the", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog", "."]. 
 
-Suppose we somewhere have inside our input text two sentences, "he had become the monster" and  "he had lost himself". Our trie might in such a case look something like this (note that this is not the full trie):
+Suppose we have somewhere inside our input text two sentences, "he had become the monster" and  "he had lost himself". Our trie might in such a case look something like this (note that this is not the full trie):
 
 ![plain trie graph](https://i.imgur.com/Knm9D99.png)
 
