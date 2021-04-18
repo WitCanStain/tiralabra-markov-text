@@ -12,18 +12,20 @@ public class MarkovProcess {
      * Create a sentence by traversing the trie.
      * @param trie the trie from which the sentence is to be created.
      * @param length the number of tokens (words) in the sentence.
+     * @param k the depth of the trie
      * @return the generated sentence.
      */
-    public static String generateSentence(Trie trie, int length) {
+    public static String generateSentence(Trie trie, int k, int length) {
         System.out.println("Entered generateSentence.");
         String sentence = "";
-        List<String> prevSequence = new ArrayList<>();
+//        List<String> prevSequence = new ArrayList<>();
+        String [] prevSequence = new String[10];
         TrieNode current = trie.getRoot();
         
-        int k = Main.getK();
-        ArrayList<String> childTokens = new ArrayList<>();
-        ArrayList<Integer> weights = new ArrayList<>();
         
+        ArrayList<String> childTokens;
+        ArrayList<Integer> weights;
+        int sequenceLastIndex = 0;
         /* we have to select the first k words separately since we don't have
         enough tokens to draw on yet.
         */
@@ -36,13 +38,12 @@ public class MarkovProcess {
             
             
             sentence += token + " ";
-            System.out.println("Sentence: " + sentence);
-            prevSequence.add(token);
+            
+//            prevSequence.add(token);
+            prevSequence = Utility.arrayAdd(prevSequence, i, token);
+            sequenceLastIndex++;
             current = current.getChildNodes().get(token);
         }
-        System.out.println("First part end.");
-        
-        
         
         for (int i = k; i < length; i++) {
             childTokens = current.getChildTokens();
@@ -51,18 +52,25 @@ public class MarkovProcess {
             String token = Utility.weightedChoice(childTokens, weights);
 
             sentence += token + " ";
-            System.out.println("Sentence: " + sentence);
-            prevSequence = prevSequence.subList(prevSequence.size()-k+1, prevSequence.size());
-            prevSequence.add(token);
-            System.out.println("prevsequence: " + prevSequence);
-            current = trie.getNodeFromSequence(prevSequence);
+            
+//            prevSequence = prevSequence.subList(prevSequence.size()-k+1, prevSequence.size());
+//            prevSequence.add(token);
+            prevSequence = Utility.arrayAdd(prevSequence, sequenceLastIndex, token);
+            sequenceLastIndex++;
+            int l = 0;
+            for (int j = sequenceLastIndex-k+1; j <= sequenceLastIndex; j++) {
+                prevSequence[l] = prevSequence[j];
+            }
+            sequenceLastIndex = k-1;
+            
+            current = trie.getNodeFromSequence(prevSequence, sequenceLastIndex);
             if (current == null) {
                 System.out.println("Error! Error! Token not found.");
                 break;
             }
         }
         
-        System.out.println("Second part end.");
+        
         System.out.println("Sentence:");
         System.out.println(sentence);
         return sentence;

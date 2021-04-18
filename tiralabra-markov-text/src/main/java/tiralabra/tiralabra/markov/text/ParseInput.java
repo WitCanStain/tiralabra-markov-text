@@ -38,7 +38,5 @@ public class ParseInput {
         return tokenList;
     }
     
-    public static ArrayList<String> getTokenList() {
-        return tokenList;
-    }
+    
 }

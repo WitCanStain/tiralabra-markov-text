@@ -16,18 +16,15 @@ public class Utility {
      */
     public static String weightedChoice(ArrayList<String> childTokens, ArrayList<Integer> weights) {
         int sumWeight = 0;
-        for (int i = 0; i<weights.size(); i++) {
-            System.out.println("Weight: " + weights.get(i) + ", token: " + childTokens.get(i));
-        }
+        
         ArrayList<Integer> cumulativeWeights = new ArrayList<>();
         for (int i : weights) {
             sumWeight += i;
             cumulativeWeights.add(sumWeight);
         }
-        System.out.println("Sumweight: " + sumWeight);
-        System.out.println("cumulative weights: " + cumulativeWeights);
-        Random random = new Random();
-        int randomNumber = random.nextInt(sumWeight);
+        
+        
+        int randomNumber = randomIntInRange(sumWeight);
         int randomIndex = 0;
         for (int i = 0; i < cumulativeWeights.size(); i++) {
             if (cumulativeWeights.get(i) >= randomNumber) {
@@ -35,13 +32,43 @@ public class Utility {
                 break;
             }
         }
-        System.out.println("Random Index: " + randomIndex);
+        
         String token = childTokens.get(randomIndex);
-        System.out.println("Weighted choice: " + token);
-        return token;
         
+        return token;   
+    }
+    
+    public static int randomIntInRange(int range) {
         
+        return (int) (System.nanoTime() %  range);
         
+    }
+    
+    /**
+     * This method simulated the feature of ArrayList wherein the length of the
+     * array is doubled if its size is exceeded and the new value inserted into
+     * this new array, which is then returned.
+     * @param array the array into which the value is to be added
+     * @param lastIndex the last index where the array has meaningful values
+     * @param value the element to be inserted into the array
+     * @return either the old array with the element inserted, or a new array 
+     * double the size of the given one where the element has been inserted.
+     * Keeping track of the last index will need to be done in association with
+     * the method call, this method will not do it for you.
+     */
+    public static String[] arrayAdd(String[] array, int lastIndex, String value) {
+        
+        if (lastIndex < array.length-1) {
+            array[lastIndex+1] = value;
+            return array;
+        } else {
+            String[] newArray = new String[array.length * 2];
+            for (int i = 0; i< array.length; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[array.length] = value;
+            return newArray;
+        }
     }
     
     

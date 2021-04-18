@@ -21,11 +21,10 @@ public class Trie {
     public void createTrie(ArrayList<String> tokenList, int k) {
         
         for (int i = k; i < tokenList.size(); i++) {
-            ArrayList<String> sequence = new ArrayList<>();
+            String[] sequence = new String[k+1];
             for (int j = i-k; j <= i; j++) {
-                sequence.add(tokenList.get(j));
+                sequence[j-(i-k)] = tokenList.get(j);   
             }
-            
             insert(sequence);
         }
         System.out.println("Trie created.");
@@ -36,7 +35,7 @@ public class Trie {
      * counter of its occurrences if it already exists.
      * @param sequence the sequence of tokens to be inserted.
      */
-    public void insert(ArrayList<String> sequence) {
+    public void insert(String[] sequence) {
         TrieNode current = root;
         
         for (String token : sequence) {
@@ -44,19 +43,27 @@ public class Trie {
             if (nodeChildren.containsKey(token)) {
                 current.addWeightToExisting(current.getChildTokens().indexOf(token));
                 current = nodeChildren.get(token);
-                
-                
-                
             } else {
                 TrieNode newNode = new TrieNode();
                 nodeChildren.put(token, newNode);
                 current.childTokensAdd(token);
                 current.addNewWeight();
                 current = newNode;
-                
             }
-        }
-        System.out.println("Sequence inserted.");
+        }//        for (String token : sequence) {
+//            HashMap<String, TrieNode> nodeChildren = current.getChildNodes();
+//            if (nodeChildren.containsKey(token)) {
+//                current.addWeightToExisting(current.getChildTokens().indexOf(token));
+//                current = nodeChildren.get(token);
+//            } else {
+//                TrieNode newNode = new TrieNode();
+//                nodeChildren.put(token, newNode);
+//                current.childTokensAdd(token);
+//                current.addNewWeight();
+//                current = newNode;
+//            }
+//        }
+        
         
         
         
@@ -68,11 +75,11 @@ public class Trie {
      * @param sequence the sequence to traverse, i.e. a list of tokens.
      * @return the last node of the sequence.
      */
-    public TrieNode getNodeFromSequence(List<String> sequence) {
+    public TrieNode getNodeFromSequence(String[] sequence, int lastIndex) {
         TrieNode current = root;
-        for (int i = 0; i < sequence.size(); i++) {
+        for (int i = 0; i < lastIndex; i++) {
             
-            String token = sequence.get(i);
+            String token = sequence[i];
             TrieNode node = current.getChildNodes().get(token);
             if (node == null) {
                 return null;
