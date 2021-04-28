@@ -8,3 +8,4 @@ I will probably put all my datastructures into their own package to help with fi
 untested properly, so that will be a task for the next version. For the next deadline I'll also start experimenting with larger training sets and some promising tricks suggested by Hannu - 
 joining together prepositions with words, etc.
 
+Time used: 5 hours.
