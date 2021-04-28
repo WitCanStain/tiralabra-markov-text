@@ -71,5 +71,14 @@ public class Utility {
         }
     }
     
+    public static int pow(int base, int exponent) {
+        int pow = base;
+        for (int i = 1; i < exponent; i++) {
+            pow *= exponent;
+        }
+        
+        return pow;
+    }
+    
     
 }

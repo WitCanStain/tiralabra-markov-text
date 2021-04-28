@@ -7,21 +7,24 @@ import java.util.*;
  * @author ruby
  */
 public class TrieNode {
-    private HashMap<String, TrieNode> childNodes;
+    private CustomHashMap childNodes;
     private ArrayList<String> childTokens;
     private ArrayList<Integer> weights;
     
     
     
-    public TrieNode() {
+    
+    
+    public TrieNode(int i) {
         childTokens = new ArrayList<>();
         weights = new ArrayList<>();
-        childNodes = new HashMap<String, TrieNode>();
+        childNodes = new CustomHashMap();
+        
         
     }
     
-    
-    public HashMap<String, TrieNode> getChildNodes() {
+
+    public CustomHashMap getChildNodes() {
         return childNodes;
     }
     
@@ -44,6 +47,8 @@ public class TrieNode {
     public ArrayList<Integer> getWeights() {
         return weights;
     }
+    
+    
     
     
 }

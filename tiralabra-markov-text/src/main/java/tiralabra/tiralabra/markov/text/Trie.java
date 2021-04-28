@@ -8,7 +8,7 @@ public class Trie {
     private TrieNode root;
     
     public Trie (ArrayList<String> tokenList, int k) {
-        root = new TrieNode();
+        root = new TrieNode(1);
         createTrie(tokenList, k);
     }
     
@@ -39,12 +39,12 @@ public class Trie {
         TrieNode current = root;
         
         for (String token : sequence) {
-            HashMap<String, TrieNode> nodeChildren = current.getChildNodes();
+            CustomHashMap nodeChildren = current.getChildNodes();
             if (nodeChildren.containsKey(token)) {
                 current.addWeightToExisting(current.getChildTokens().indexOf(token));
                 current = nodeChildren.get(token);
             } else {
-                TrieNode newNode = new TrieNode();
+                TrieNode newNode = new TrieNode(1);
                 nodeChildren.put(token, newNode);
                 current.childTokensAdd(token);
                 current.addNewWeight();
