@@ -5,7 +5,7 @@ it seemed like a simpler solution to rely on ArrayList-like functionality. It wa
 enough to figure out, but CustomHashMap required me to think of some interesting stuff - like how to maintain index coherence when you grow the CustomHashMap.
 
 I will probably put all my datastructures into their own package to help with file management. Further, CustomHashMap and DynamicList, while seemingly functional, remain
-untested properly, so that will be a task for the next version. For the next deadline I'll also start experimenting with larger training sets and some promising tricks suggested by Hannu - 
+untested properly, so that will be a task for the next version. Further, they still lack errorhandling for cases like querying negative indices etc. For the next deadline I'll also start experimenting with larger training sets and some promising tricks suggested by Hannu - 
 joining together prepositions with words, etc.
 
 Time used: 5 hours.
