@@ -9,3 +9,5 @@
 [Week 3 report](https://github.com/WitCanStain/tiralabra-markov-text/blob/main/documentation/week3report.md)
 
 [Week 4 report](https://github.com/WitCanStain/tiralabra-markov-text/blob/main/documentation/week4report.md)
+
+[Week 5 report](https://github.com/WitCanStain/tiralabra-markov-text/blob/main/documentation/week5report.md)
