@@ -1,4 +1,7 @@
 package tiralabra.tiralabra.markov.text;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
+import tiralabra.tiralabra.markov.text.datastructures.Trie;
+import tiralabra.tiralabra.markov.text.performance.PerformanceTest;
 import java.util.*;
 /**
  *
@@ -9,9 +12,13 @@ public class Main {
     
     
     public static void main(String[] args) {
-        ArrayList<String> tokenList = ParseInput.readFile("../testInputFile.txt");
+        
+        PerformanceTest.TrieCreationTest();
+        System.exit(0);
+        
+        DynamicList<String> tokenList = ParseInput.readFile("../dostoyevsky_karamazov.txt");
         int k = 2; // this value determines how many previous words to take into accocunt
-        int l = 6; // this value determines how long the sentence should be
+        int l = 20; // this value determines how long the sentence should be
         Trie trie = new Trie(tokenList, k);
         MarkovProcess.generateSentence(trie, k, l);
         System.out.println("End.");

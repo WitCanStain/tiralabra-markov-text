@@ -1,4 +1,5 @@
-package tiralabra.tiralabra.markov.text;
+package tiralabra.tiralabra.markov.text.datastructures;
+import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
 import java.util.*;
 /**
  *
@@ -7,7 +8,7 @@ import java.util.*;
 public class Trie {
     private TrieNode root;
     
-    public Trie (ArrayList<String> tokenList, int k) {
+    public Trie (DynamicList<String> tokenList, int k) {
         root = new TrieNode();
         createTrie(tokenList, k);
     }
@@ -18,7 +19,7 @@ public class Trie {
      * @param k the number of tokens constituting the previous state. The depth
      * of the trie will be k+2 (root, k nodes and leaf node)
      */
-    public void createTrie(ArrayList<String> tokenList, int k) {
+    public void createTrie(DynamicList<String> tokenList, int k) {
         
         for (int i = k; i < tokenList.size(); i++) {
             String[] sequence = new String[k+1];

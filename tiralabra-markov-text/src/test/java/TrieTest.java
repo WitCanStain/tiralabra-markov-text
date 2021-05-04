@@ -6,15 +6,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
-import tiralabra.tiralabra.markov.text.Trie;
-import tiralabra.tiralabra.markov.text.TrieNode;
+import tiralabra.tiralabra.markov.text.datastructures.Trie;
+import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
 import tiralabra.tiralabra.markov.text.ParseInput;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
 /**
  *
  * @author ruby
  */
 public class TrieTest {
-    ArrayList<String> tokenList;
+    DynamicList<String> tokenList;
     Trie trie;
     public TrieTest() {
     }

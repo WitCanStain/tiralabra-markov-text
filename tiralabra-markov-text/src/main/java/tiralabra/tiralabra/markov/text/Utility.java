@@ -1,4 +1,5 @@
 package tiralabra.tiralabra.markov.text;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
 import java.util.*;
 /**
  *
@@ -14,10 +15,10 @@ public class Utility {
      * @param weights
      * @return the next token based on frequency of occurrence.
      */
-    public static String weightedChoice(DynamicList childTokens, DynamicList weights) {
+    public static String weightedChoice(DynamicList<String> childTokens, DynamicList<Integer> weights) {
         int sumWeight = 0;
         
-        DynamicList cumulativeWeights = new DynamicList();
+        DynamicList<Integer> cumulativeWeights = new DynamicList();
         for (int i = 0; i < weights.size(); i++) {
             sumWeight += (int)weights.get(i);
             cumulativeWeights.add(sumWeight);

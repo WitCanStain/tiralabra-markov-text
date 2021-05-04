@@ -8,13 +8,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tiralabra.tiralabra.markov.text.MarkovProcess;
 import tiralabra.tiralabra.markov.text.ParseInput;
-import tiralabra.tiralabra.markov.text.Trie;
+import tiralabra.tiralabra.markov.text.datastructures.Trie;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
 /**
  *
  * @author ruby
  */
 public class MarkovProcessTest {
-    ArrayList<String> tokenList;
+    DynamicList<String> tokenList;
     Trie trie;
     
     public MarkovProcessTest() {

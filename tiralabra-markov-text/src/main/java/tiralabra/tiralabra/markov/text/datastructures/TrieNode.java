@@ -1,4 +1,4 @@
-package tiralabra.tiralabra.markov.text;
+package tiralabra.tiralabra.markov.text.datastructures;
 
 
 import java.util.*;
@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class TrieNode {
     private CustomHashMap childNodes;
-    private DynamicList childTokens;
-    private DynamicList weights;
+    private DynamicList<String> childTokens;
+    private DynamicList<Integer> weights;
     
     
     

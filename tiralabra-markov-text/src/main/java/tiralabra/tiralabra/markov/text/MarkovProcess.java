@@ -1,4 +1,7 @@
 package tiralabra.tiralabra.markov.text;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
+import tiralabra.tiralabra.markov.text.datastructures.Trie;
+import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
 import java.util.*;
 /**
  *

@@ -3,7 +3,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import tiralabra.tiralabra.markov.text.DynamicList;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
 import static org.junit.Assert.*;
 import org.junit.Test;
 /**

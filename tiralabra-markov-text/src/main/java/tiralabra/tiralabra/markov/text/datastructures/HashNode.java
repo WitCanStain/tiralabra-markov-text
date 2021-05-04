@@ -1,4 +1,6 @@
-package tiralabra.tiralabra.markov.text;
+package tiralabra.tiralabra.markov.text.datastructures;
+
+import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
 
 /**
  *

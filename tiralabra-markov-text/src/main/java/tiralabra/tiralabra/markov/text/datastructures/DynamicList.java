@@ -1,4 +1,4 @@
-package tiralabra.tiralabra.markov.text;
+package tiralabra.tiralabra.markov.text.datastructures;
 
 /**
  *
@@ -12,7 +12,11 @@ public class DynamicList<T> {
         array = new Object[10];
         
     }
-    
+    /**
+     * Add a new item to the list. Grow its size if its current size
+     * is exceeded.
+     * @param value the item to be added to the list.
+     */
     public void add(Object value) {
         
         if (lastIndex < array.length) {
@@ -30,17 +34,28 @@ public class DynamicList<T> {
         }
     }
     
-    public Object get(int index) {
+    /**
+     * Get the item at the given index
+     * @param index index of the item to be retrieved
+     * @return the item at the given index
+     */
+    public T get(int index) {
         if (indexOutOfBounds(index)) {
-            System.out.println("Index out of bounds.");
+            System.out.println("get(): index out of bounds.");
             return null;
         }
         final T object = (T)array[index];
         return object;
     }
     
-    public void set(int index, int value) {
+    /**
+     * This method sets the value of the list at the given index
+     * @param index index where the given item is to be inserted
+     * @param value the given item to be inserted
+     */
+    public void set(int index, T value) {
         if (indexOutOfBounds(index)) {
+            System.out.println("set(): index out of bounds.");
             return;
         }
         array[index] = value;
@@ -59,6 +74,21 @@ public class DynamicList<T> {
             }
         }
         return -1;
+    }
+    
+    /**
+     * This method checks whether the DynamicList contains the given token
+     * @param token token to be checked for existence in the list
+     * @return a truth value denoting the existence of the token in the list
+     */
+    public boolean contains(T token) {
+        
+        for (Object object: array) {
+            if (((T)object).equals(token)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public int size() {

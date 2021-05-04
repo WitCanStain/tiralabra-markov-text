@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import tiralabra.tiralabra.markov.text.ParseInput;
+import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
 
 /**
  *
@@ -40,7 +41,7 @@ public class ParseInputTest {
     // public void hello() {}
     @Test
     public void readFileReturnsArrayList() {
-        assertTrue(ParseInput.readFile("../testInputFile.txt") instanceof ArrayList<?>);
+        assertTrue(ParseInput.readFile("../testInputFile.txt") instanceof DynamicList<?>);
     }
     
     
