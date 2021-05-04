@@ -23,8 +23,8 @@ public class MarkovProcess {
         TrieNode current = trie.getRoot();
         
         
-        ArrayList<String> childTokens;
-        ArrayList<Integer> weights;
+        DynamicList<String> childTokens;
+        DynamicList<Integer> weights;
         int sequenceLastIndex = 0;
         /* we have to select the first k words separately since we don't have
         enough tokens to draw on yet.

@@ -8,16 +8,16 @@ import java.util.*;
  */
 public class TrieNode {
     private CustomHashMap childNodes;
-    private ArrayList<String> childTokens;
-    private ArrayList<Integer> weights;
+    private DynamicList childTokens;
+    private DynamicList weights;
     
     
     
     
     
-    public TrieNode(int i) {
-        childTokens = new ArrayList<>();
-        weights = new ArrayList<>();
+    public TrieNode() {
+        childTokens = new DynamicList();
+        weights = new DynamicList();
         childNodes = new CustomHashMap();
         
         
@@ -32,19 +32,19 @@ public class TrieNode {
         childTokens.add(token);
     }
     
-    public ArrayList<String> getChildTokens() {
+    public DynamicList getChildTokens() {
         return childTokens;
     }
     
     public void addWeightToExisting(int index) {
-        weights.set(index, weights.get(index)+1);
+        weights.set(index, (int)weights.get(index)+1);
     }
     
     public void addNewWeight() {
         weights.add(1);
     }
     
-    public ArrayList<Integer> getWeights() {
+    public DynamicList getWeights() {
         return weights;
     }
     

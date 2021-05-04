@@ -14,12 +14,12 @@ public class Utility {
      * @param weights
      * @return the next token based on frequency of occurrence.
      */
-    public static String weightedChoice(ArrayList<String> childTokens, ArrayList<Integer> weights) {
+    public static String weightedChoice(DynamicList childTokens, DynamicList weights) {
         int sumWeight = 0;
         
-        ArrayList<Integer> cumulativeWeights = new ArrayList<>();
-        for (int i : weights) {
-            sumWeight += i;
+        DynamicList cumulativeWeights = new DynamicList();
+        for (int i = 0; i < weights.size(); i++) {
+            sumWeight += (int)weights.get(i);
             cumulativeWeights.add(sumWeight);
         }
         
@@ -27,13 +27,13 @@ public class Utility {
         int randomNumber = randomIntInRange(sumWeight);
         int randomIndex = 0;
         for (int i = 0; i < cumulativeWeights.size(); i++) {
-            if (cumulativeWeights.get(i) >= randomNumber) {
+            if ((int)cumulativeWeights.get(i) >= randomNumber) {
                 randomIndex = i;
                 break;
             }
         }
         
-        String token = childTokens.get(randomIndex);
+        String token = (String)childTokens.get(randomIndex);
         
         return token;   
     }

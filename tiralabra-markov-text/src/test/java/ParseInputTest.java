@@ -40,7 +40,7 @@ public class ParseInputTest {
     // public void hello() {}
     @Test
     public void readFileReturnsArrayList() {
-        assertTrue(ParseInput.readFile("../testInputFile") instanceof ArrayList<?>);
+        assertTrue(ParseInput.readFile("../testInputFile.txt") instanceof ArrayList<?>);
     }
     
     

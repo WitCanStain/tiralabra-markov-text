@@ -23,7 +23,7 @@ public class MarkovProcessTest {
     
     @Before
     public void setUp() {
-        tokenList = ParseInput.readFile("../testInputFile");
+        tokenList = ParseInput.readFile("../testInputFile.txt");
         trie = new Trie(tokenList, 1);
     }
     
@@ -42,8 +42,8 @@ public class MarkovProcessTest {
         
         String[] words = sentence.split(" ");
         
-        System.out.println(words);
-        //assertEquals(4, words.length);
+        
+        assertEquals(4, words.length);
         
     
     }

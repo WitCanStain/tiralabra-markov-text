@@ -4,7 +4,7 @@ package tiralabra.tiralabra.markov.text;
  *
  * @author ruby
  */
-public class DynamicList {
+public class DynamicList<T> {
     private Object array[];
     private int lastIndex = 0;
     
@@ -19,7 +19,7 @@ public class DynamicList {
             array[lastIndex] = value;
             lastIndex++;
         } else {
-            System.out.println("Growing array!");
+            
             Object newArray[] = new Object[array.length*2];
             for (int i = 0; i < array.length; i++) {
                 newArray[i] = array[i];
@@ -31,11 +31,45 @@ public class DynamicList {
     }
     
     public Object get(int index) {
-        return array[index];
+        if (indexOutOfBounds(index)) {
+            System.out.println("Index out of bounds.");
+            return null;
+        }
+        final T object = (T)array[index];
+        return object;
+    }
+    
+    public void set(int index, int value) {
+        if (indexOutOfBounds(index)) {
+            return;
+        }
+        array[index] = value;
+    }
+    
+    /**
+     * This function returns the index of the given string token if it exists, or -1
+     * otherwise. Only works for DynamicLists of type String.
+     * @param token token to be searched
+     * @return index of token if found or -1 otherwise
+     */
+    public int indexOf(T token) {
+        for (int i = 0; i <= lastIndex; i++) {
+            if (((T)array[i]).equals(token)) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     public int size() {
         return lastIndex;
     }
     
+    public int internalArraySize() {
+        return array.length;
+    }
+    
+    private boolean indexOutOfBounds(int index) {
+        return index < 0 || index > lastIndex;
+    }
 }

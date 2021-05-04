@@ -23,7 +23,7 @@ public class TrieTest {
     
     @Before
     public void setUp() {
-        tokenList = ParseInput.readFile("../testInputFile");
+        tokenList = ParseInput.readFile("../testInputFile.txt");
         trie = new Trie(tokenList, 2);
     }
     
@@ -51,6 +51,19 @@ public class TrieTest {
          trie.insert(seq);
          TrieNode node = trie.getNodeFromSequence(seq, 2);
          assertTrue(node instanceof TrieNode);
+     }
+     
+     @Test
+     public void getNodeFromSequenceReturnsCorrectNode() {
+         String[] seq = {"testInputOne", "testInputTwo", "testInputThree"};
+             
+         
+         trie.insert(seq);
+         TrieNode node = trie.getNodeFromSequence(seq, 2);
+         System.out.println(node.getChildTokens());
+         assertTrue(node.getChildTokens().contains("testInputThree"));
+         
+         
      }
 
 

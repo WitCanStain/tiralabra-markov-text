@@ -8,7 +8,7 @@ public class Trie {
     private TrieNode root;
     
     public Trie (ArrayList<String> tokenList, int k) {
-        root = new TrieNode(1);
+        root = new TrieNode();
         createTrie(tokenList, k);
     }
     
@@ -44,25 +44,13 @@ public class Trie {
                 current.addWeightToExisting(current.getChildTokens().indexOf(token));
                 current = nodeChildren.get(token);
             } else {
-                TrieNode newNode = new TrieNode(1);
+                TrieNode newNode = new TrieNode();
                 nodeChildren.put(token, newNode);
                 current.childTokensAdd(token);
                 current.addNewWeight();
                 current = newNode;
             }
-        }//        for (String token : sequence) {
-//            HashMap<String, TrieNode> nodeChildren = current.getChildNodes();
-//            if (nodeChildren.containsKey(token)) {
-//                current.addWeightToExisting(current.getChildTokens().indexOf(token));
-//                current = nodeChildren.get(token);
-//            } else {
-//                TrieNode newNode = new TrieNode();
-//                nodeChildren.put(token, newNode);
-//                current.childTokensAdd(token);
-//                current.addNewWeight();
-//                current = newNode;
-//            }
-//        }
+        }
         
         
         
@@ -73,6 +61,7 @@ public class Trie {
     /**
      * Traverse the trie along the given sequence and return the last node.
      * @param sequence the sequence to traverse, i.e. a list of tokens.
+     * @param lastIndex
      * @return the last node of the sequence.
      */
     public TrieNode getNodeFromSequence(String[] sequence, int lastIndex) {

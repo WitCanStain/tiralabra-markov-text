@@ -5,7 +5,7 @@ package tiralabra.tiralabra.markov.text;
  * @author ruby
  */
 public class CustomHashMap {
-    private DynamicList[] hashArray;
+    private DynamicList<HashNode>[] hashArray;
     private int elementCounter = 0;
     private final int A = 31;
     private final float loadfactor = 0.75f;
@@ -13,7 +13,7 @@ public class CustomHashMap {
     public CustomHashMap() {
         hashArray = new DynamicList[16]; // we start with an array of size 2^4
         for (int i = 0; i<16; i++) {
-            hashArray[i] = new DynamicList();
+            hashArray[i] = new DynamicList<>();
         }
     }
     
@@ -41,7 +41,7 @@ public class CustomHashMap {
     
     private void resize() {
         
-        DynamicList[] newHashArray = new DynamicList[2*hashArray.length];
+        DynamicList<HashNode>[] newHashArray = new DynamicList[2*hashArray.length];
         for (int i = 0; i < newHashArray.length; i++) {
             newHashArray[i]= new DynamicList();
         }
@@ -60,7 +60,7 @@ public class CustomHashMap {
         
         int index = hashFunc(key) & (hashArray.length-1);
         
-        DynamicList bucket = hashArray[index];
+        DynamicList<HashNode> bucket = hashArray[index];
         
         for (int i = 0; i < bucket.size(); i++) {
             
