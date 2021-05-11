@@ -19,10 +19,10 @@ public class MarkovProcess {
      * @return the generated sentence.
      */
     public static String generateSentence(Trie trie, int k, int length) {
-        System.out.println("Entered generateSentence.");
+        
         String sentence = "";
 //        List<String> prevSequence = new ArrayList<>();
-        String [] prevSequence = new String[10];
+        DynamicList<String> prevSequence = new DynamicList<>();
         TrieNode current = trie.getRoot();
         
         
@@ -43,13 +43,14 @@ public class MarkovProcess {
             sentence += token + " ";
             
 //            prevSequence.add(token);
-            prevSequence = Utility.arrayAdd(prevSequence, i, token);
+            prevSequence.add(token);
             sequenceLastIndex++;
             current = current.getChildNodes().get(token);
         }
         
         for (int i = k; i < length; i++) {
             childTokens = current.getChildTokens();
+            
             weights = current.getWeights();
 
             String token = Utility.weightedChoice(childTokens, weights);
@@ -58,15 +59,18 @@ public class MarkovProcess {
             
 //            prevSequence = prevSequence.subList(prevSequence.size()-k+1, prevSequence.size());
 //            prevSequence.add(token);
-            prevSequence = Utility.arrayAdd(prevSequence, sequenceLastIndex, token);
+            prevSequence.add(token);
             sequenceLastIndex++;
-            int l = 0;
-            for (int j = sequenceLastIndex-k+1; j <= sequenceLastIndex; j++) {
-                prevSequence[l] = prevSequence[j];
+            
+            // prevSequence should contain the previous k tokens only
+            DynamicList<String> newSequence = new DynamicList<>();
+            for (int j = 0; j < prevSequence.size()-1; j++) {
+                newSequence.add(prevSequence.get(j+1));
             }
+            prevSequence = newSequence;
             sequenceLastIndex = k-1;
             
-            current = trie.getNodeFromSequence(prevSequence, sequenceLastIndex);
+            current = trie.getNodeFromSequence(prevSequence, prevSequence.size());
             if (current == null) {
                 System.out.println("Error! Error! Token not found.");
                 break;
@@ -74,7 +78,7 @@ public class MarkovProcess {
         }
         
         
-        System.out.println("Sentence:");
+        
         System.out.println(sentence);
         return sentence;
     }

@@ -13,14 +13,15 @@ public class Main {
     
     public static void main(String[] args) {
         
-        PerformanceTest.TrieCreationTest();
-        System.exit(0);
         
-        DynamicList<String> tokenList = ParseInput.readFile("../dostoyevsky_karamazov.txt");
+        DynamicList<String> tokenList = ParseInput.readFile("../fitzgerald_gatsby.txt");
         int k = 2; // this value determines how many previous words to take into accocunt
         int l = 20; // this value determines how long the sentence should be
         Trie trie = new Trie(tokenList, k);
-        MarkovProcess.generateSentence(trie, k, l);
+        for (int i = 0; i<10; i++) {
+            MarkovProcess.generateSentence(trie, k, l);
+        }
+        
         System.out.println("End.");
         
 //        DynamicList array = new DynamicList();

@@ -17,7 +17,10 @@ public class Utility {
      */
     public static String weightedChoice(DynamicList<String> childTokens, DynamicList<Integer> weights) {
         int sumWeight = 0;
-        
+//        System.out.println("ChildTokens:" + childTokens.size());
+//        for (int i = 0; i<childTokens.size(); i++) {
+//            System.out.print(childTokens.get(i) + ", ");
+//        }
         DynamicList<Integer> cumulativeWeights = new DynamicList();
         for (int i = 0; i < weights.size(); i++) {
             sumWeight += (int)weights.get(i);
