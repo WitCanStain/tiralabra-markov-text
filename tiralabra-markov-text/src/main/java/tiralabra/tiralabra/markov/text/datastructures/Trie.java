@@ -1,6 +1,6 @@
 package tiralabra.tiralabra.markov.text.datastructures;
-import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
-import java.util.*;
+
+
 /**
  *
  * @author ruby
@@ -21,6 +21,7 @@ public class Trie {
      */
     public void createTrie(DynamicList<String> tokenList, int k) {
         long startTime = System.nanoTime();
+        
         for (int i = k; i < tokenList.size(); i++) {
             String[] sequence = new String[k+1];
             for (int j = i-k; j <= i; j++) {
@@ -28,10 +29,11 @@ public class Trie {
             }
             insert(sequence);
         }
+        
         long endTime = System.nanoTime();
         long runTime = (endTime-startTime) / 1000000;
         
-        System.out.println("Trie created from " + tokenList.size() + " words in " + runTime + " ms.\n");
+        System.out.println("Trie created from " + tokenList.size() + " tokens in " + runTime + " ms.\n");
     }
     
     /**

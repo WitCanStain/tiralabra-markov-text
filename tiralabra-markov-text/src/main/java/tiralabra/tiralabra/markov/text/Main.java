@@ -13,10 +13,10 @@ public class Main {
     
     public static void main(String[] args) {
         
-        String filePath = "../fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
+        String filePath = "./fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
         int k = 2; // this value determines how many previous words to take into accocunt
-        int l = 20; // this value determines how long the sentence should be
-        int n = 10; // this value determines how many sentences we generate at once.
+        int l = 16; // this value determines how long the sentence should be
+        int n = 5; // this value determines how many sentences we generate at once.
         
         // parsing the command line arguments
         for (int i = 0; i < args.length; i++) {
