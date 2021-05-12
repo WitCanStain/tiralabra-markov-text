@@ -60,20 +60,20 @@ public class Utility {
      * Keeping track of the last index will need to be done in association with
      * the method call, this method will not do it for you.
      */
-    public static String[] arrayAdd(String[] array, int lastIndex, String value) {
-        
-        if (lastIndex < array.length-1) {
-            array[lastIndex+1] = value;
-            return array;
-        } else {
-            String[] newArray = new String[array.length * 2];
-            for (int i = 0; i< array.length; i++) {
-                newArray[i] = array[i];
-            }
-            newArray[array.length] = value;
-            return newArray;
-        }
-    }
+//    public static String[] arrayAdd(String[] array, int lastIndex, String value) {
+//        
+//        if (lastIndex < array.length-1) {
+//            array[lastIndex+1] = value;
+//            return array;
+//        } else {
+//            String[] newArray = new String[array.length * 2];
+//            for (int i = 0; i< array.length; i++) {
+//                newArray[i] = array[i];
+//            }
+//            newArray[array.length] = value;
+//            return newArray;
+//        }
+//    }
     
     public static int pow(int base, int exponent) {
         int pow = base;

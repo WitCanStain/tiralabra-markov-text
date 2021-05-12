@@ -31,7 +31,7 @@ public class PerformanceTest {
         for (Long testTime: testTimes) {
             sum += testTime;
         }
-        System.out.println("The average time to create a trie of " + size + " words based on running 20 tests: " + (((double)sum) / 20)/1000000 + " m/s");
+        System.out.println("The average time to create a trie of " + size + " words based on running 20 tests: " + (((double)sum) / 20)/1000000 + " ms");
         
         
         

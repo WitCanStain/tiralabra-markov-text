@@ -77,9 +77,6 @@ public class MarkovProcess {
             }
         }
         
-        
-        
-        System.out.println(sentence);
         return sentence;
     }
     

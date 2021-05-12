@@ -46,20 +46,28 @@ public class TrieTest {
      }
      @Test
      public void insertInsertsSequence()  {
-         String[] seq = {"testInputOne", "testInputTwo", "testInputThree"};
+         DynamicList<String> seq = new DynamicList<>();
+         seq.add("testInputOne");
+         seq.add("testInputTwo");
+         seq.add("testInputThree");
+         String[] seq2 = {"testInputOne", "testInputTwo", "testInputThree"};
              
          
-         trie.insert(seq);
+         trie.insert(seq2);
          TrieNode node = trie.getNodeFromSequence(seq, 2);
          assertTrue(node instanceof TrieNode);
      }
      
      @Test
      public void getNodeFromSequenceReturnsCorrectNode() {
-         String[] seq = {"testInputOne", "testInputTwo", "testInputThree"};
+         DynamicList<String> seq = new DynamicList<>();
+         seq.add("testInputOne");
+         seq.add("testInputTwo");
+         seq.add("testInputThree");
+         String[] seq2 = {"testInputOne", "testInputTwo", "testInputThree"};
              
          
-         trie.insert(seq);
+         trie.insert(seq2);
          TrieNode node = trie.getNodeFromSequence(seq, 2);
          System.out.println(node.getChildTokens());
          assertTrue(node.getChildTokens().contains("testInputThree"));

@@ -20,7 +20,7 @@ public class Trie {
      * of the trie will be k+2 (root, k nodes and leaf node)
      */
     public void createTrie(DynamicList<String> tokenList, int k) {
-        
+        long startTime = System.nanoTime();
         for (int i = k; i < tokenList.size(); i++) {
             String[] sequence = new String[k+1];
             for (int j = i-k; j <= i; j++) {
@@ -28,7 +28,10 @@ public class Trie {
             }
             insert(sequence);
         }
-        System.out.println("Trie created.");
+        long endTime = System.nanoTime();
+        long runTime = (endTime-startTime) / 1000000;
+        
+        System.out.println("Trie created from " + tokenList.size() + " words in " + runTime + " ms.\n");
     }
     
     /**
