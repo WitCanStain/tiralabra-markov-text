@@ -14,12 +14,12 @@ public class PerformanceTest {
     
     public static void runTests() {
         
-        trieCreationTest(2, "../fitzgerald_gatsby.txt", 20);
-        trieCreationTest(4, "../fitzgerald_gatsby.txt", 20);
-        trieCreationTest(2, "../dostoyevsky_karamazov.txt", 20);
-        trieCreationTest(3, "../dostoyevsky_karamazov.txt", 20);
-        sentenceCreationTest(2, "../dostoyevsky_karamazov.txt");
-        sentenceCreationTest(3, "../dostoyevsky_karamazov.txt");
+        trieCreationTest(2, "./fitzgerald_gatsby.txt", 20);
+        trieCreationTest(4, "./fitzgerald_gatsby.txt", 20);
+        trieCreationTest(2, "./dostoyevsky_karamazov.txt", 20);
+        trieCreationTest(3, "./dostoyevsky_karamazov.txt", 20);
+        sentenceCreationTest(2, "./dostoyevsky_karamazov.txt");
+        sentenceCreationTest(3, "./dostoyevsky_karamazov.txt");
         System.exit(0);
     }
     

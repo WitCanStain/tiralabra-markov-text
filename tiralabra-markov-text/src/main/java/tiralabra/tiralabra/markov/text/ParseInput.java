@@ -52,7 +52,7 @@ public class ParseInput {
      */
     public static Object[] parseCmdLine(String[] args) {
         
-        String filePath = "../fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
+        String filePath = "./fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
         int k = 6; // this value determines how many previous words to take into accocunt
         int l = 15; // this value determines how long the sentence should be
         int n = 10; // this value determines how many sentences we generate at once.
