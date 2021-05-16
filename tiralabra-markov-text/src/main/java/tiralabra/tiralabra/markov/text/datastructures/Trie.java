@@ -70,12 +70,7 @@ public class Trie {
      * @return the last node of the sequence.
      */
     public TrieNode getNodeFromSequence(DynamicList<String> sequence, int lastIndex) {
-//        System.out.println("Sequence and lastIndex:");
-//        for (int i = 0; i < lastIndex; i++) {
-//            System.out.print(sequence.get(i) + ", ");
-//        }
-//        System.out.println("---");
-//        System.out.println(lastIndex);
+
         TrieNode current = root;
         for (int i = 0; i < lastIndex; i++) {
             

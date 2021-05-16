@@ -13,34 +13,15 @@ public class Main {
     
     public static void main(String[] args) {
         
-        String filePath = "./fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
-        int k = 2; // this value determines how many previous words to take into accocunt
-        int l = 10; // this value determines how long the sentence should be
-        int n = 5; // this value determines how many sentences we generate at once.
         
-        // parsing the command line arguments
-        for (int i = 0; i < args.length; i++) {
-            
-            switch (args[i]) {
-                case "-t":
-                    PerformanceTest.runTests();
-                    System.exit(0);
-                case "-f":
-                    filePath = args[i + 1];
-                    break;
-                case "-k":
-                    k = Integer.parseInt(args[i + 1]);
-                    break;
-                case "-l":
-                    l = Integer.parseInt(args[i + 1]);
-                    break;
-                case "-n":
-                    n = Integer.parseInt(args[i + 1]);
-                    break;
-                default:
-                    break;
-            }
-        }
+//        PerformanceTest.runTests();
+        Object[] params = ParseInput.parseCmdLine(args);
+        
+        String filePath = (String) params[0];
+        int k = (int) params[1];
+        int l = (int) params[2];
+        int n = (int) params[3];
+        
         
         System.out.println("Creating trie from file " + filePath + ".");
         DynamicList<String> tokenList = ParseInput.readFile(filePath);
