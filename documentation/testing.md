@@ -1,3 +1,8 @@
 ## Testing ##
 
-Currently the tests verify the basic functionality of each part of the program - that creating a trie works properly, that inserting new sequences into the trie works properly, and so on. 
+The tests are designed to verify the functionality of each individual method that is involved in the algorithmic part of the program. These tests are grouped in the corresponding test classes for the classes they test. For example, DynamicListTest tests whether the DynamicList responds appropriately, inserts and retrieves items, maintains index bound safety, et cetera. TrieTest tests that inserting and retrieving sequences and nodes in the trie functions properly. UtilityTest verifies that the helper methods, in particular weightedChoice() give proper results. The structure of inputs chosen for the tests were chosen based on values that could conceivably occur during the normal running of the program. Thus, while "testInputOne" in TrieTest might not occur naturally in a training text, its specific contents in that test are not as relevant as the fact that it is a string and can be used to test whether the proper node is returned from getNodeFromSequence().
+
+Performance tests are designed to stress the program by running multiple times with large bodies of text. Their job is not to verify the qualitative interestingness of results but the runtime performance of the algorithms of the program. Their inputs are the same inputs used to provide qualitative analysis - namely, books by Fitzgerald and Dostoyevsky.
+
+The tests can be repeated with mvn test jacoco:report in the directory of the project or through 'Test Project' in NetBeans. Performance Tests can be run by providing -t as a flag or by uncommenting the line 17 in Main.java before running the program.
+
