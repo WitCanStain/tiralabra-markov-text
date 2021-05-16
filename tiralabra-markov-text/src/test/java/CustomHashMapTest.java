@@ -71,4 +71,11 @@ public class CustomHashMapTest {
         
         assertTrue(secondRetrieved.getChildTokens().contains("test2"));
     }
+    
+    @Test
+    public void gettingNonExistentItemReturnsNull() {
+        TrieNode result = customHashMap.get("nonexistent");
+        
+        assertEquals(result, null);
+    }
 }

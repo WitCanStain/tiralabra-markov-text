@@ -8,6 +8,8 @@ import java.util.*;
 /**
  *
  * @author ruby
+ * This class is responsible for reading the given text file and parsing it into
+ * a list of tokens.
  */
 public class ParseInput {
     private static DynamicList<String> tokenList = new DynamicList<>();
@@ -19,7 +21,7 @@ public class ParseInput {
      * @return a list of words in the file, separated by whitespace
      */
     public static DynamicList<String> readFile(final String filePath) {
-        
+        Set<String> uniqueTokens = new HashSet<>();
         try {
             File inputFile = new File(filePath);
             Scanner reader = new Scanner(inputFile);
@@ -27,18 +29,17 @@ public class ParseInput {
                 String[] readLine = reader.nextLine().split("\\s+|(?=\\W)");
                 for (String token: readLine) {
                     tokenList.add(token);
+                    uniqueTokens.add(token);
                 }
-                
-                
             }
             reader.close();
-            
             
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred:");
             e.printStackTrace();
         }
         
+        System.out.println("Found " + tokenList.size() + " total tokens and " + uniqueTokens.size() + " unique tokens");
         return tokenList;
     }
     

@@ -2,13 +2,15 @@ package tiralabra.tiralabra.markov.text.datastructures;
 
 
 /**
- *
+ * 
  * @author ruby
+ * This class implements the trie structure and provides methods for interacting
+ * with the trie.
  */
 public class Trie {
     private TrieNode root;
     
-    public Trie (DynamicList<String> tokenList, int k) {
+    public Trie(DynamicList<String> tokenList, int k) {
         root = new TrieNode();
         createTrie(tokenList, k);
     }
@@ -20,20 +22,17 @@ public class Trie {
      * of the trie will be k+2 (root, k nodes and leaf node)
      */
     public void createTrie(DynamicList<String> tokenList, int k) {
-        long startTime = System.nanoTime();
+        
         
         for (int i = k; i < tokenList.size(); i++) {
-            String[] sequence = new String[k+1];
-            for (int j = i-k; j <= i; j++) {
-                sequence[j-(i-k)] = tokenList.get(j);   
+            String[] sequence = new String[k + 1];
+            for (int j = i - k; j <= i; j++) {
+                sequence[j - (i - k)] = tokenList.get(j);   
             }
             insert(sequence);
         }
         
-        long endTime = System.nanoTime();
-        long runTime = (endTime-startTime) / 1000000;
         
-        System.out.println("Trie created from " + tokenList.size() + " tokens in " + runTime + " ms.\n");
     }
     
     /**
@@ -82,9 +81,7 @@ public class Trie {
             
             String token = sequence.get(i);
             TrieNode node = current.getChildNodes().get(token);
-            if (node == null) {
-                return null;
-            }
+            
             current = node;
             
         }

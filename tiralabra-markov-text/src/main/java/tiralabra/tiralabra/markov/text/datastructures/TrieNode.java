@@ -1,28 +1,23 @@
 package tiralabra.tiralabra.markov.text.datastructures;
 
 
-import java.util.*;
+
 /**
  *
  * @author ruby
+ * This class implements the trieNode which comprise the trie. Each node records
+ * its child nodes and the number of their occurrences.
  */
 public class TrieNode {
     private CustomHashMap childNodes;
     private DynamicList<String> childTokens;
     private DynamicList<Integer> weights;
     
-    
-    
-    
-    
     public TrieNode() {
         childTokens = new DynamicList();
         weights = new DynamicList();
         childNodes = new CustomHashMap();
-        
-        
     }
-    
 
     public CustomHashMap getChildNodes() {
         return childNodes;
@@ -37,7 +32,7 @@ public class TrieNode {
     }
     
     public void addWeightToExisting(int index) {
-        weights.set(index, (int)weights.get(index)+1);
+        weights.set(index, (int) weights.get(index) + 1);
     }
     
     public void addNewWeight() {

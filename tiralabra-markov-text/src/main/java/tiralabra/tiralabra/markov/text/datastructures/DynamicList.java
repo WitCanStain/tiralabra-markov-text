@@ -3,6 +3,9 @@ package tiralabra.tiralabra.markov.text.datastructures;
 /**
  *
  * @author ruby
+ * @param <T> The type of data the list contains
+ * This class implements a dynamically growing list. It is meant to imitate 
+ * Java's ArrayList in its relevant features.
  */
 public class DynamicList<T> {
     private Object array[];
@@ -24,7 +27,7 @@ public class DynamicList<T> {
             lastIndex++;
         } else {
             
-            Object newArray[] = new Object[array.length*2];
+            Object newArray[] = new Object[array.length * 2];
             for (int i = 0; i < array.length; i++) {
                 newArray[i] = array[i];
             }
@@ -44,7 +47,7 @@ public class DynamicList<T> {
             System.out.println("get(): index out of bounds.");
             return null;
         }
-        final T object = (T)array[index];
+        final T object = (T) array[index];
         return object;
     }
     
@@ -52,13 +55,15 @@ public class DynamicList<T> {
      * This method sets the value of the list at the given index
      * @param index index where the given item is to be inserted
      * @param value the given item to be inserted
+     * @return false if index out of bounds, true otherwise
      */
-    public void set(int index, T value) {
+    public boolean set(int index, T value) {
         if (indexOutOfBounds(index)) {
             System.out.println("set(): index out of bounds.");
-            return;
+            return false;
         }
         array[index] = value;
+        return true;
     }
     
     /**
@@ -68,8 +73,8 @@ public class DynamicList<T> {
      * @return index of token if found or -1 otherwise
      */
     public int indexOf(T token) {
-        for (int i = 0; i <= lastIndex; i++) {
-            if (((T)array[i]).equals(token)) {
+        for (int i = 0; i < lastIndex; i++) {
+            if (((T) array[i]).equals(token)) {
                 return i;
             }
         }
@@ -83,8 +88,8 @@ public class DynamicList<T> {
      */
     public boolean contains(T token) {
         
-        for (Object object: array) {
-            if (((T)object).equals(token)) {
+        for (int i = 0; i < lastIndex; i++) {
+            if (((T) array[i]).equals(token)) {
                 return true;
             }
         }

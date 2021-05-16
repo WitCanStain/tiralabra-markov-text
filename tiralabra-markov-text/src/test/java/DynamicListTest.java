@@ -11,30 +11,16 @@ import org.junit.Test;
  * @author ruby
  */
 public class DynamicListTest {
-    DynamicList dynamicList;
+    DynamicList<Integer> dynamicList;
     
     
     public DynamicListTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
-        dynamicList = new DynamicList();
+        dynamicList = new DynamicList<>();
     }
-    
-    @After
-    public void tearDown() {
-    }
-
-    
     
     @Test
     public void addingOneElementAndCheckingSizeReturnsOne() {
@@ -58,8 +44,36 @@ public class DynamicListTest {
         }
         int finalSize = dynamicList.internalArraySize();
         
-        assertTrue(finalSize == 20);
+        assertTrue(finalSize == 20);   
+    }
+    
+    @Test
+    public void settingIndexOutOfBoundsReturnsFalse() {
+        boolean retVal = dynamicList.set(2, 1);
         
+        assertFalse(retVal);
+    }
+    
+    @Test
+    public void indexOfNonExistentElementIsNegativeOne() {
+        dynamicList.add(1);
+        int retVal = dynamicList.indexOf(2);
+        System.out.println(retVal);
+        assertEquals(retVal, -1);
+    }
+    
+    @Test
+    public void containsReturnsFalseWhenItemDoesNotExist() {
+        dynamicList.add(2);
+        boolean retVal = dynamicList.contains(1);
         
+        assertFalse(retVal);
+    }
+    
+    @Test
+    public void containsReturnsTrueWhenItemExists() {
+        dynamicList.add(1);
+        boolean retVal = dynamicList.contains(1);
+        assertTrue(retVal);
     }
 }

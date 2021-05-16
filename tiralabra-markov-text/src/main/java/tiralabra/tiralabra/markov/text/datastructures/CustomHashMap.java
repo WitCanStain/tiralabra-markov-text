@@ -1,23 +1,21 @@
 package tiralabra.tiralabra.markov.text.datastructures;
-
 import tiralabra.tiralabra.markov.text.Utility;
-import tiralabra.tiralabra.markov.text.datastructures.DynamicList;
-import tiralabra.tiralabra.markov.text.datastructures.HashNode;
-import tiralabra.tiralabra.markov.text.datastructures.TrieNode;
 
 /**
  *
  * @author ruby
+ * This class implements a custom version of a HashMap. Due to the nature of this
+ * project, we only need it to store TrieNodes.
  */
 public class CustomHashMap {
     private DynamicList<HashNode>[] hashArray;
     private int elementCounter = 0;
-    private final int A = 31;
+    private final int constant = 31;
     private final float loadfactor = 0.75f;
     
     public CustomHashMap() {
-        hashArray = new DynamicList[16]; // we start with an array of size 2^4
-        for (int i = 0; i<16; i++) {
+        hashArray = new DynamicList[16];
+        for (int i = 0; i < 16; i++) {
             hashArray[i] = new DynamicList<>();
         }
     }
@@ -32,14 +30,14 @@ public class CustomHashMap {
         if (!containsKey(key)) {    
             elementCounter++;
             // grow the array when number of elements exceeds the load threshold
-            if (elementCounter >= hashArray.length*loadfactor) {
+            if (elementCounter >= hashArray.length * loadfactor) {
                 resize();
             }
             // this ensures that our hashcode falls within the range of the hash array
-            int index = hashFunc(key) & (hashArray.length-1);
+            int index = hashFunc(key) & (hashArray.length - 1);
             hashArray[index].add(new HashNode(key, value));    
         } else { // if the key is already in the CustomHashMap, overwrite its value
-            int index = hashFunc(key) & (hashArray.length-1);
+            int index = hashFunc(key) & (hashArray.length - 1);
             hashArray[index].add(new HashNode(key, value));
             hashArray[index].set(hashArray[index].indexOf(get(key, value)), new HashNode(key, value));
         }
@@ -54,9 +52,9 @@ public class CustomHashMap {
      * @param key the key that acts as the index of the given value.
      * @param value the value to be inserted into the CustomHashMap.
      */
-    private void put(DynamicList[] newHashArray, String key, TrieNode value ) {
+    private void put(DynamicList[] newHashArray, String key, TrieNode value) {
         
-        int index = hashFunc(key) & (newHashArray.length-1);
+        int index = hashFunc(key) & (newHashArray.length - 1);
         newHashArray[index].add(new HashNode(key, value));
         
     }
@@ -68,15 +66,15 @@ public class CustomHashMap {
      */
     private void resize() {
         
-        DynamicList<HashNode>[] newHashArray = new DynamicList[2*hashArray.length];
+        DynamicList<HashNode>[] newHashArray = new DynamicList[2 * hashArray.length];
         for (int i = 0; i < newHashArray.length; i++) {
-            newHashArray[i]= new DynamicList();
+            newHashArray[i] = new DynamicList();
         }
                 
         // redistribute all existing entries to maintain indexing coherence
         for (int i = 0; i < hashArray.length; i++) {
-            for (int j = 0; j <hashArray[i].size(); j++) {
-                put(newHashArray, ((HashNode)hashArray[i].get(j)).key, ((HashNode)hashArray[i].get(j)).value);
+            for (int j = 0; j < hashArray[i].size(); j++) {
+                put(newHashArray, ((HashNode) hashArray[i].get(j)).key, ((HashNode) hashArray[i].get(j)).value);
             }
         }
         // set old hash array to point to the new, bigger one
@@ -91,7 +89,7 @@ public class CustomHashMap {
      */
     public TrieNode get(String key) {
         
-        int index = hashFunc(key) & (hashArray.length-1);
+        int index = hashFunc(key) & (hashArray.length - 1);
         
         DynamicList<HashNode> bucket = hashArray[index];
         
@@ -119,7 +117,7 @@ public class CustomHashMap {
      */
     private HashNode get(String key, TrieNode value) {
         
-        int index = hashFunc(key) & (hashArray.length-1);
+        int index = hashFunc(key) & (hashArray.length - 1);
         
         DynamicList<HashNode> bucket = hashArray[index];
         
@@ -160,8 +158,8 @@ public class CustomHashMap {
         
         int hashSum = 0;
         int l = key.length();
-        for (int i = 0; i<l; i++) {
-            hashSum += ((int)key.charAt(i))*Utility.pow(A, (l-1)-i);
+        for (int i = 0; i < l; i++) {
+            hashSum += ((int) key.charAt(i)) * Utility.pow(constant, (l - 1) - i);
         }
         
         return hashSum;

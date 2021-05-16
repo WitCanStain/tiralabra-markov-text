@@ -15,38 +15,54 @@ public class Main {
         
         String filePath = "./fitzgerald_gatsby.txt"; // this is the text we'll be constructing sentences from
         int k = 2; // this value determines how many previous words to take into accocunt
-        int l = 16; // this value determines how long the sentence should be
+        int l = 10; // this value determines how long the sentence should be
         int n = 5; // this value determines how many sentences we generate at once.
         
         // parsing the command line arguments
         for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-f")) {
-                filePath = args[i+1];
-            } else if (args[i].equals("-k")) {
-                k = Integer.parseInt(args[i+1]);
-            } else if (args[i].equals("-l")) {
-                l = Integer.parseInt(args[i+1]);
-            } else if (args[i].equals("-n")) {
-                n = Integer.parseInt(args[i+1]);
+            
+            switch (args[i]) {
+                case "-t":
+                    PerformanceTest.runTests();
+                    System.exit(0);
+                case "-f":
+                    filePath = args[i + 1];
+                    break;
+                case "-k":
+                    k = Integer.parseInt(args[i + 1]);
+                    break;
+                case "-l":
+                    l = Integer.parseInt(args[i + 1]);
+                    break;
+                case "-n":
+                    n = Integer.parseInt(args[i + 1]);
+                    break;
+                default:
+                    break;
             }
         }
         
         System.out.println("Creating trie from file " + filePath + ".");
         DynamicList<String> tokenList = ParseInput.readFile(filePath);
         
+        long trieStartTime = System.nanoTime();
         Trie trie = new Trie(tokenList, k);
+        long trieEndTime = System.nanoTime();
+        long trieRunTime = (trieEndTime - trieStartTime) / 1000000;
+        
+        System.out.println("Trie created from " + tokenList.size() + " tokens in " + trieRunTime + " ms.\n");
         
         System.out.println("Generating " + n + " sentences of length " + l + " using the previous " + k + " tokens.\n");
-        long startTime = System.nanoTime();
-        for (int i = 1; i<=n; i++) {    
+        long sentenceStartTime = System.nanoTime();
+        for (int i = 1; i <= n; i++) {    
             String sentence = MarkovProcess.generateSentence(trie, k, l);
             System.out.println(String.format("%-4s %s" , i + ":",  sentence));    
         }
-        long endTime = System.nanoTime();
-        long runTime = (endTime-startTime) / 1000000;
+        long sentenceEndTime = System.nanoTime();
+        long sentenceRunTime = (sentenceEndTime - sentenceStartTime) / 1000000;
         System.out.println();
         
-        System.out.println(n + " sentences generated in " + runTime + " ms.");
+        System.out.println(n + " sentences generated in " + sentenceRunTime + " ms.");
         
         
     }
